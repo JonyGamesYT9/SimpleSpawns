@@ -25,7 +25,6 @@ class SimpleSpawns extends PluginBase
   */
   public function onLoad(): void
   {
-    $this->saveResource("Config.yml");
     self::$instance = $this;
     $this->provider = new YamlProvider($this);
   }
@@ -35,6 +34,7 @@ class SimpleSpawns extends PluginBase
   */
   public function onEnable(): void
   {
+    $this->saveResource("Config.yml");
     $provider = $this->getYamlProvider();
     if ($provider->getConfigVersion() === 1) {
       $commands = [new LobbyCommand($this),
