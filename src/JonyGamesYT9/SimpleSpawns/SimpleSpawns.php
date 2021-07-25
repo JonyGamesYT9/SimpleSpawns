@@ -37,6 +37,9 @@ class SimpleSpawns extends PluginBase
   {
     $provider = $this->getYamlProvider();
     if ($provider->getConfigVersion() === 1) {
+      if ($provider->getWorld() !== null) {
+        $this->getServer()->loadLevel($provider->getWorld());
+      } 
       $commands = [new LobbyCommand($this),
         new SetLobbyCommand($this)];
       foreach ($commands as $command) {
