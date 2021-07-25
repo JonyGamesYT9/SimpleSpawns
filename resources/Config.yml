@@ -1,1 +1,20 @@
-
+version: 1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+world:
+x:
+y:
+z:
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+teleport.hub.message: "§l§7SimpleSpawns | §r§fYou returned to the lobby correctly."
+teleport.error.message: "§l§7SimpleSpawns | §r§fThere was an error while teleporting contact an administrator."
+no.permissions: "§l§7SimpleSpawns | §r§7You do not have permission to use this command."
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# If you are going to edit this message the variables are:
+# {world} = World where you spawn.
+# {x} {y} {z} = Coordinates of where you put the spawn.
+place.hub.success: "§l§7SimpleSpawns | §r§7You placed the spawn correctly at the coordinates: World: §7{world}§f, X: §7{x}§f, Y: §7{y}§f, Z: §7{z}"
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Author: JonyGamesYT9 
+# Icon Credits: https://www.flaticon.com/free-icon/teleport_1388524?term=teleport&page=1&position=76&page=1&position=76&related_id=1388524&origin=search
+# Permissions: spawns.command.setlobby
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
