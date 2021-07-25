@@ -1,10 +1,5 @@
 version: 1
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-world:
-x:
-y:
-z:
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 teleport.hub.message: "§l§7SimpleSpawns | §r§fYou returned to the lobby correctly."
 teleport.error.message: "§l§7SimpleSpawns | §r§fThere was an error while teleporting contact an administrator."
 no.permissions: "§l§7SimpleSpawns | §r§7You do not have permission to use this command."
