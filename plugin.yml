@@ -10,6 +10,6 @@ load: STARTUP
 
 permissions:
  spawns.command.setlobby:
-   description: "Get full access to the help command."
+   description: "Get permission to place the lobby wherever you want."
    default: op 
 ...
