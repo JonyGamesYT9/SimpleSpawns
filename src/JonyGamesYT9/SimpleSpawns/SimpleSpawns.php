@@ -25,7 +25,7 @@ class SimpleSpawns extends PluginBase
   */
   public function onLoad(): void
   {
-    $this->saveResource("config.yml");
+    $this->saveResource("Config.yml");
     self::$instance = $this;
     $this->provider = new YamlProvider($this);
   }
