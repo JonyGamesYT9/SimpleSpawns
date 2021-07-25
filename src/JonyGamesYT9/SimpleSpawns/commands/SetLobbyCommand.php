@@ -8,6 +8,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\Player;
 use function strtolower;
+use function str_replace;
 
 /**
  * Class SetLobbyCommand
@@ -43,9 +44,9 @@ class SetLobbyCommand extends Command implements PluginIdentifiableCommand
         $this->getPlugin()->getYamlProvider()->setCoordinates("x", $sender->getX());
         $this->getPlugin()->getYamlProvider()->setCoordinates("y", $sender->getY());
         $this->getPlugin()->getYamlProvider()->setCoordinates("z", $sender->getZ());
-        $sender->sendMessage(strtolower(["&", "{world}", "{x}", "{y}", "{z}"], ["§", $sender->getLevel()->getFolderName(), $sender->getX(), $sender->getY(), $sender->getZ()], $this->getPlugin()->getYamlProvider()->getMessage("place.hub.success")));
+        $sender->sendMessage(str_replace(["&", "{world}", "{x}", "{y}", "{z}"], ["§", $sender->getLevel()->getFolderName(), $sender->getX(), $sender->getY(), $sender->getZ()], $this->getPlugin()->getYamlProvider()->getMessage("place.hub.success")));
       } else {
-        $sender->sendMessage(strtolower(["&"], ["§"], $this->getPlugin()->getYamlProvider()->getMessage("no.permissions")));
+        $sender->sendMessage(str_replace(["&"], ["§"], $this->getPlugin()->getYamlProvider()->getMessage("no.permissions")));
       }
     } else {
       $sender->sendMessage("§l§7SimpleSpawns | §r§fYou can only run this command from the game.");
