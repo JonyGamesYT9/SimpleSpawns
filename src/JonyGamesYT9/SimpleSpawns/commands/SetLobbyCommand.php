@@ -3,7 +3,6 @@
 namespace JonyGamesYT9\SimpleSpawns\commands;
 
 use JonyGamesYT9\SimpleSpawns\SimpleSpawns;
-use JonyGamesYT9\SimpleSpawns\provider\YamlProvider;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
