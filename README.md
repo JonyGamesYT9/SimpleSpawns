@@ -17,4 +17,4 @@
 ## Project information:
 | Version | Pocketmine API | PHP | Status |
 |---|---|---|---|
-| 1.0.0 | 3.0.0 | 7.4 | Unverified |
+| 1.0.0 | 3.0.0 | 7.4 | Verified |
