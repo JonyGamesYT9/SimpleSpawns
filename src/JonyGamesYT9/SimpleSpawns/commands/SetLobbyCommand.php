@@ -39,7 +39,7 @@ class SetLobbyCommand extends Command implements PluginIdentifiableCommand
   public function execute(CommandSender $sender, string $label, array $args) 
   {
     if ($sender instanceof Player) {
-      if ($sender->hasPermission("spawns.command.setlobby")) {
+      if ($sender->hasPermission("simplespawns.setlobby")) {
         $this->getPlugin()->getYamlProvider()->setWorld($sender->getLevel()->getFolderName());
         $this->getPlugin()->getYamlProvider()->setCoordinates("x", $sender->getX());
         $this->getPlugin()->getYamlProvider()->setCoordinates("y", $sender->getY());
