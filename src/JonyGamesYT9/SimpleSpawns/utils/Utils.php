@@ -15,7 +15,7 @@ class Utils
 {
   
   /**
-   * @param Player $pl 
+   * @param Player $player
    * @return void 
    */
   public static function teleport(Player $player): void 
