@@ -14,6 +14,10 @@ use pocketmine\Server;
 class Utils 
 {
   
+  /**
+   * @param Player $pl 
+   * @return void 
+   */
   public static function teleport(Player $player): void 
   {
     $provider = SimpleSpawns::getInstance()->getYamlProvider();
