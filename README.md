@@ -1,3 +1,5 @@
+[![](https://poggit.pmmp.io/shield.state/SimpleSpawns)]
+
 <div align="center">
 <h1>SimpleSpawns | v1.0.0<h1>
 <p>Spawns system for PocketMine-MP, written in PHP-7.4 and only supports PocketMine-MP 3.0.0</p>
