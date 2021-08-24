@@ -11,10 +11,4 @@ permissions:
  simplespawns.setlobby:
    description: "Get permission to place the lobby wherever you want."
    default: op 
- simplespawns.dellobby:
-   description: "Permission for the player to remove the lobby"
-   default: op
- simplespawns.configurator:
-   description: "Set up the spawn system"
-   default: op
 ...
