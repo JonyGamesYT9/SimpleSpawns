@@ -15,10 +15,10 @@ class SimpleSpawns extends PluginBase
 {
 
   /** @var SimpleSpawns $instance */
-  private static $instance;
+  private static SimpleSpawns $instance;
 
   /** @var YamlProvider $provider */
-  private $provider;
+  private YamlProvider $provider;
 
   /**
   * @return void
