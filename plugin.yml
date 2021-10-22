@@ -1,8 +1,8 @@
 ---
 name: SimpleSpawns
 main: JonyGamesYT9\SimpleSpawns\SimpleSpawns
-api: [3.0.0]
-version: 2.0.0
+api: [4.0.0]
+version: 1.0.0
 author: JonyGamesYT9 
 description: Spawns system for PocketMine-MP
 website: https://github.com/JonyGamesYT9
