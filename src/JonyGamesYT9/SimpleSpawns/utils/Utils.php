@@ -3,7 +3,7 @@
 namespace JonyGamesYT9\SimpleSpawns\utils;
 
 use JonyGamesYT9\SimpleSpawns\SimpleSpawns;
-use pocketmine\level\Position;
+use pocketmine\world\Position;
 use pocketmine\Player;
 use pocketmine\Server;
 
@@ -22,7 +22,7 @@ class Utils
   {
     $provider = SimpleSpawns::getInstance()->getYamlProvider();
     if ($provider->getWorld() != null) {
-      $teleport = new Position($provider->getCoordinates("x"), $provider->getCoordinates("y"), $provider->getCoordinates("z"), Server::getInstance()->getLevelByName($provider->getWorld()));
+      $teleport = new Position($provider->getCoordinates("x"), $provider->getCoordinates("y"), $provider->getCoordinates("z"), Server::getInstance()->getWorldByName($provider->getWorld()));
       $player->teleport($teleport);
       $player->sendMessage($provider->getMessage("teleport.hub.message"));
     } else {
