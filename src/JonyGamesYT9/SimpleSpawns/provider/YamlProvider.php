@@ -13,10 +13,10 @@ class YamlProvider
 {
   
   /** @var SimpleSpawns $plugin */
-  private $plugin;
+  private SimpleSpawns $plugin;
   
   /** @var Config $config */
-  private $config;
+  private Config $config;
   
   /**
    * YamlProvider constructor.
