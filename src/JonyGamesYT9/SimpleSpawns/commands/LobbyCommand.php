@@ -7,7 +7,7 @@ use JonyGamesYT9\SimpleSpawns\utils\Utils;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
-use pocketmine\Player;
+use pocketmine\player\Player;
 
 /**
  * Class LobbyCommand
@@ -17,7 +17,7 @@ class LobbyCommand extends Command implements PluginIdentifiableCommand
 {
   
   /** @var SimpleSpawns $plugin */
-  private $plugin;
+  private SimpleSpawns $plugin;
   
   /**
    * LobbyCommand constructor.
