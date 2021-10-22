@@ -6,7 +6,7 @@ use JonyGamesYT9\SimpleSpawns\SimpleSpawns;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use function strtolower;
 use function str_replace;
 
@@ -18,7 +18,7 @@ class SetLobbyCommand extends Command implements PluginIdentifiableCommand
 {
   
   /** @var SimpleSpawns $plugin */
-  private $plugin;
+  private SimpleSpawns $plugin;
   
   /**
    * SetLobbyCommand constructor.
@@ -40,11 +40,11 @@ class SetLobbyCommand extends Command implements PluginIdentifiableCommand
   {
     if ($sender instanceof Player) {
       if ($sender->hasPermission("simplespawns.setlobby")) {
-        $this->getPlugin()->getYamlProvider()->setWorld($sender->getLevel()->getFolderName());
+        $this->getPlugin()->getYamlProvider()->setWorld($sender->getWorld()->getFolderName());
         $this->getPlugin()->getYamlProvider()->setCoordinates("x", $sender->getX());
         $this->getPlugin()->getYamlProvider()->setCoordinates("y", $sender->getY());
         $this->getPlugin()->getYamlProvider()->setCoordinates("z", $sender->getZ());
-        $sender->sendMessage(str_replace(["&", "{world}", "{x}", "{y}", "{z}"], ["§", $sender->getLevel()->getFolderName(), $sender->getX(), $sender->getY(), $sender->getZ()], $this->getPlugin()->getYamlProvider()->getMessage("place.hub.success")));
+        $sender->sendMessage(str_replace(["&", "{world}", "{x}", "{y}", "{z}"], ["§", $sender->getWorld()->getFolderName(), $sender->getX(), $sender->getY(), $sender->getZ()], $this->getPlugin()->getYamlProvider()->getMessage("place.hub.success")));
       } else {
         $sender->sendMessage(str_replace(["&"], ["§"], $this->getPlugin()->getYamlProvider()->getMessage("no.permissions")));
       }
