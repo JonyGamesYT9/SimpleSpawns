@@ -4,7 +4,7 @@ namespace JonyGamesYT9\SimpleSpawns\utils;
 
 use JonyGamesYT9\SimpleSpawns\SimpleSpawns;
 use pocketmine\world\Position;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\Server;
 
 /**
