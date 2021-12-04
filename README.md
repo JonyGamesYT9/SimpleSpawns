@@ -1,7 +1,7 @@
 [![](https://poggit.pmmp.io/shield.state/SimpleSpawns)]
 
 <div align="center">
-<h1>SimpleSpawns | v1.0.0<h1>
+<h1>SimpleSpawns | v3.0.0<h1>
 <p>Spawns system for PocketMine-MP, written in PHP-8 and only supports PocketMine-MP 4.0.0</p>
 </div>
 
@@ -25,4 +25,4 @@
 ### 📖 Project information:
 | Version | Pocketmine API | PHP | Status |
 |---|---|---|---|
-| 1.0.0 | 4.0.0 | 8 | Verified |
+| 3.0.0 | 4.0.0 | 8 | Verified |
