@@ -40,10 +40,10 @@ class SetLobbyCommand extends Command
     if ($sender instanceof Player) {
       if ($sender->hasPermission("simplespawns.setlobby")) {
         $this->getPlugin()->getYamlProvider()->setWorld($sender->getWorld()->getFolderName());
-        $this->getPlugin()->getYamlProvider()->setCoordinates("x", $sender->getX());
-        $this->getPlugin()->getYamlProvider()->setCoordinates("y", $sender->getY());
-        $this->getPlugin()->getYamlProvider()->setCoordinates("z", $sender->getZ());
-        $sender->sendMessage(str_replace(["&", "{world}", "{x}", "{y}", "{z}"], ["§", $sender->getWorld()->getFolderName(), $sender->getX(), $sender->getY(), $sender->getZ()], $this->getPlugin()->getYamlProvider()->getMessage("place.hub.success")));
+        $this->getPlugin()->getYamlProvider()->setCoordinates("x", $sender->getPosition()->getX());
+        $this->getPlugin()->getYamlProvider()->setCoordinates("y", $sender->getPosition()->getY());
+        $this->getPlugin()->getYamlProvider()->setCoordinates("z", $sender->getPosition()->getZ());
+        $sender->sendMessage(str_replace(["&", "{world}", "{x}", "{y}", "{z}"], ["§", $sender->getWorld()->getFolderName(), $sender->getPosition()->getX(), $sender->getPosition()->getY(), $sender->getPosition()->getZ()], $this->getPlugin()->getYamlProvider()->getMessage("place.hub.success")));
       } else {
         $sender->sendMessage(str_replace(["&"], ["§"], $this->getPlugin()->getYamlProvider()->getMessage("no.permissions")));
       }
