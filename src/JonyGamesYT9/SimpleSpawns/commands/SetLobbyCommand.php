@@ -5,7 +5,6 @@ namespace JonyGamesYT9\SimpleSpawns\commands;
 use JonyGamesYT9\SimpleSpawns\SimpleSpawns;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\player\Player;
 use function strtolower;
 use function str_replace;
@@ -14,7 +13,7 @@ use function str_replace;
  * Class SetLobbyCommand
  * @package JonyGamesYT9\SimpleSpawns\commands
  */
-class SetLobbyCommand extends Command implements PluginIdentifiableCommand 
+class SetLobbyCommand extends Command
 {
   
   /** @var SimpleSpawns $plugin */
