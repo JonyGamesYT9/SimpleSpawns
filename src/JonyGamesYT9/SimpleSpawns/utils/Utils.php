@@ -22,7 +22,7 @@ class Utils
   {
     $provider = SimpleSpawns::getInstance()->getYamlProvider();
     if ($provider->getWorld() != null) {
-      $teleport = new Position($provider->getCoordinates("x"), $provider->getCoordinates("y"), $provider->getCoordinates("z"), Server::getInstance()->getWorldByName($provider->getWorld()));
+      $teleport = new Position($provider->getCoordinates("x"), $provider->getCoordinates("y"), $provider->getCoordinates("z"), Server::getInstance()->getWorldManager()->getWorldByName($provider->getWorld()));
       $player->teleport($teleport);
       $player->sendMessage($provider->getMessage("teleport.hub.message"));
     } else {
