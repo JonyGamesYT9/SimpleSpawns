@@ -6,14 +6,13 @@ use JonyGamesYT9\SimpleSpawns\SimpleSpawns;
 use JonyGamesYT9\SimpleSpawns\utils\Utils;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\player\Player;
 
 /**
  * Class LobbyCommand
  * @package JonyGamesYT9\SimpleSpawns\commands
  */
-class LobbyCommand extends Command implements PluginIdentifiableCommand 
+class LobbyCommand extends Command
 {
   
   /** @var SimpleSpawns $plugin */
