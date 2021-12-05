@@ -5,6 +5,8 @@ namespace JonyGamesYT9\SimpleSpawns\commands;
 use JonyGamesYT9\SimpleSpawns\SimpleSpawns;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\plugin\Plugin;
 use pocketmine\player\Player;
 use function strtolower;
 use function str_replace;
@@ -13,7 +15,7 @@ use function str_replace;
  * Class SetLobbyCommand
  * @package JonyGamesYT9\SimpleSpawns\commands
  */
-class SetLobbyCommand extends Command
+class SetLobbyCommand extends Command implements PluginOwned
 {
   
   /** @var SimpleSpawns $plugin */
@@ -53,9 +55,9 @@ class SetLobbyCommand extends Command
   }
   
   /**
-   * @return SimpleSpawns
+   * @return Plugin
    */
-  public function getPlugin(): SimpleSpawns
+  public function getOwningPlugin(): Plugin
   {
     return $this->plugin;
   }
