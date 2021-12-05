@@ -7,12 +7,14 @@ use JonyGamesYT9\SimpleSpawns\utils\Utils;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\plugin\Plugin;
 
 /**
  * Class LobbyCommand
  * @package JonyGamesYT9\SimpleSpawns\commands
  */
-class LobbyCommand extends Command
+class LobbyCommand extends Command implements PluginOwned
 {
   
   /** @var SimpleSpawns $plugin */
@@ -44,9 +46,9 @@ class LobbyCommand extends Command
   }
   
   /**
-   * @return SimpleSpawns
+   * @return Plugin
    */
-  public function getPlugin(): SimpleSpawns
+  public function getOwningPlugin(): Plugin
   {
     return $this->plugin;
   }
