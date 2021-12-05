@@ -18,12 +18,16 @@ use function str_replace;
 class SetLobbyCommand extends Command implements PluginOwned
 {
   
+  /** @var SimpleSpawns $plugin */
+  private SimpleSpawns $plugin;
+  
   /**
    * SetLobbyCommand constructor.
    * @param SimpleSpawns $plugin
    */
   public function __construct(SimpleSpawns $plugin) 
   {
+    $this->plugin = $plugin;
     parent::__construct("setlobby", "Set the spawn for users to teleport", null, []);
   }
   
@@ -37,17 +41,25 @@ class SetLobbyCommand extends Command implements PluginOwned
   {
     if ($sender instanceof Player) {
       if ($sender->hasPermission("simplespawns.setlobby")) {
-        $this->getOwningPlugin()->getYamlProvider()->setWorld($sender->getWorld()->getFolderName());
-        $this->getOwningPlugin()->getYamlProvider()->setCoordinates("x", $sender->getPosition()->getX());
-        $this->getOwningPlugin()->getYamlProvider()->setCoordinates("y", $sender->getPosition()->getY());
-        $this->getOwningPlugin()->getYamlProvider()->setCoordinates("z", $sender->getPosition()->getZ());
-        $sender->sendMessage(str_replace(["&", "{world}", "{x}", "{y}", "{z}"], ["§", $sender->getWorld()->getFolderName(), $sender->getPosition()->getX(), $sender->getPosition()->getY(), $sender->getPosition()->getZ()], $this->getOwningPlugin()->getYamlProvider()->getMessage("place.hub.success")));
+        $this->getPlugin()->getYamlProvider()->setWorld($sender->getWorld()->getFolderName());
+        $this->getPlugin()->getYamlProvider()->setCoordinates("x", $sender->getPosition()->getX());
+        $this->getPlugin()->getYamlProvider()->setCoordinates("y", $sender->getPosition()->getY());
+        $this->getPlugin()->getYamlProvider()->setCoordinates("z", $sender->getPosition()->getZ());
+        $sender->sendMessage(str_replace(["&", "{world}", "{x}", "{y}", "{z}"], ["§", $sender->getWorld()->getFolderName(), $sender->getPosition()->getX(), $sender->getPosition()->getY(), $sender->getPosition()->getZ()], $this->getPlugin()->getYamlProvider()->getMessage("place.hub.success")));
       } else {
-        $sender->sendMessage(str_replace(["&"], ["§"], $this->getOwningPlugin()->getYamlProvider()->getMessage("no.permissions")));
+        $sender->sendMessage(str_replace(["&"], ["§"], $this->getPlugin()->getYamlProvider()->getMessage("no.permissions")));
       }
     } else {
       $sender->sendMessage("§l§7SimpleSpawns | §r§fYou can only run this command from the game.");
     }
+  }
+  
+  /**
+   * @return SimpleSpawns
+   */
+  public function getPlugin(): SimpleSpawns
+  {
+    return $this->plugin;
   }
   
   /**
