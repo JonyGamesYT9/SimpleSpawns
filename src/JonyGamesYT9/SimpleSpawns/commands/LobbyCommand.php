@@ -17,16 +17,12 @@ use pocketmine\plugin\Plugin;
 class LobbyCommand extends Command implements PluginOwned
 {
   
-  /** @var SimpleSpawns $plugin */
-  private SimpleSpawns $plugin;
-  
   /**
    * LobbyCommand constructor.
    * @param SimpleSpawns $plugin
    */
   public function __construct(SimpleSpawns $plugin) 
   {
-    $this->plugin = $plugin;
     parent::__construct("lobby", "Teleport to the server lobby.", null, ["hub", "spawn"]);
   }
   
@@ -50,6 +46,6 @@ class LobbyCommand extends Command implements PluginOwned
    */
   public function getOwningPlugin(): Plugin
   {
-    return $this->plugin;
+    return SimpleSpawns::getInstance();
   }
 }
