@@ -42,7 +42,7 @@ class SimpleSpawns extends PluginBase {
         return $this->config;
     }
 
-    public function getLobbyMode(string $mode): string {
+    public function getLobbyMode(string $mode): string{
         return match ($mode) {
             "normal" => SpawnFactory::MODE_NORMAL,
             "transfer" => SpawnFactory::MODE_TRANSFER,
