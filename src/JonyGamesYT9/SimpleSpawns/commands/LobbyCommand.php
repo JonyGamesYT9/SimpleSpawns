@@ -1,63 +1,30 @@
 <?php
 
-namespace JonyGamesYT9\SimpleSpawns\commands;
+namespace jonygamesyt9\simplespawns\commands;
 
-use JonyGamesYT9\SimpleSpawns\SimpleSpawns;
-use JonyGamesYT9\SimpleSpawns\utils\Utils;
+use jonygamesyt9\simplespawns\SimpleSpawns;
+use jonygamesyt9\simplespawns\spawn\SpawnFactory;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
-use pocketmine\plugin\PluginOwned;
 use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 
-/**
- * Class LobbyCommand
- * @package JonyGamesYT9\SimpleSpawns\commands
- */
-class LobbyCommand extends Command implements PluginOwned
-{
-  
-  /** @var SimpleSpawns $plugin */
-  private SimpleSpawns $plugin;
-  
-  /**
-   * LobbyCommand constructor.
-   * @param SimpleSpawns $plugin
-   */
-  public function __construct(SimpleSpawns $plugin) 
-  {
-    $this->plugin = $plugin;
-    parent::__construct("lobby", "Teleport to the server lobby.", null, ["hub", "spawn"]);
-  }
-  
-  /**
-   * @param CommandSender $sender
-   * @param string $label 
-   * @param array $args 
-   * @return mixed|void 
-   */
-  public function execute(CommandSender $sender, string $label, array $args) 
-  {
-    if ($sender instanceof Player) {
-      Utils::teleport($sender);
-    } else {
-      $sender->sendMessage("§l§7SimpleSpawns | §r§fYou can only run this command from the game.");
+class LobbyCommand extends Command implements PluginOwned {
+
+    public function __construct() {
+        parent::__construct("lobby", "Teleport to the server lobby.", null, ["hub", "spawn"]);
     }
-  }
-  
-  /**
-   * @return SimpleSpawns
-   */
-  public function getPlugin(): SimpleSpawns
-  {
-    return $this->plugin;
-  }
-  
-  /**
-   * @return Plugin
-   */
-  public function getOwningPlugin(): Plugin
-  {
-    return SimpleSpawns::getInstance();
-  }
+
+    public function execute(CommandSender $sender, string $commandLabel, array $args) {
+        if ($sender instanceof Player) {
+            SpawnFactory::getInstance()->teleport($sender);
+        } else {
+            $sender->sendMessage("§l§7SimpleSpawns | §r§fYou can only run this command from the game.");
+        }
+    }
+
+    public function getOwningPlugin(): Plugin {
+        return SimpleSpawns::getInstance();
+    }
 }

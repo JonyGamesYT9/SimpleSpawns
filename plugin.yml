@@ -1,14 +1,11 @@
 ---
 name: SimpleSpawns
-main: JonyGamesYT9\SimpleSpawns\SimpleSpawns
-api: [4.0.0]
-version: 1.0.0
-author: JonyGamesYT9 
-description: Spawns system for PocketMine-MP
-website: https://github.com/JonyGamesYT9
-
+version: 4.0-BETA
+main: jonygamesyt9\simplespawns\SimpleSpawns
+api: 4.0.0
+author: JonyGamesYT9 (iJonyMx)
 permissions:
- simplespawns.setlobby:
-   description: "Get permission to place the lobby wherever you want."
-   default: op 
+  simplespawns.command.setlobby:
+    description: "Get permission to place the lobby wherever you want."
+    default: op
 ...

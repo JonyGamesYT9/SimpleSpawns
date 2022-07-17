@@ -1,66 +1,52 @@
 <?php
 
-namespace JonyGamesYT9\SimpleSpawns;
+namespace jonygamesyt9\simplespawns;
 
-use JonyGamesYT9\SimpleSpawns\provider\YamlProvider;
-use JonyGamesYT9\SimpleSpawns\commands\LobbyCommand;
-use JonyGamesYT9\SimpleSpawns\commands\SetLobbyCommand;
+use jonygamesyt9\simplespawns\commands\LobbyCommand;
+use jonygamesyt9\simplespawns\commands\SetLobbyCommand;
+use jonygamesyt9\simplespawns\spawn\SpawnFactory;
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\SingletonTrait;
 
-/**
-* Class SimpleSpawns
-* @package JonyGamesYT9\SimpleSpawns
-*/
-class SimpleSpawns extends PluginBase
-{
+class SimpleSpawns extends PluginBase {
+    use SingletonTrait;
 
-  /** @var SimpleSpawns $instance */
-  private static SimpleSpawns $instance;
+    public const CONFIG_FILE = "config.yml";
 
-  /** @var YamlProvider $provider */
-  private YamlProvider $provider;
+    private Config $config;
 
-  /**
-  * @return void
-  */
-  public function onLoad(): void
-  {
-    self::$instance = $this;
-    $this->saveResource("Config.yml");
-    $this->provider = new YamlProvider($this);
-  }
-
-  /**
-  * @return void
-  */
-  public function onEnable(): void
-  {
-    $provider = $this->getYamlProvider();
-    if ($provider->getConfigVersion() === 1) {
-      $commands = [new LobbyCommand($this),
-        new SetLobbyCommand($this)];
-      foreach ($commands as $command) {
-        $this->getServer()->getCommandMap()->register("simplespawns", $command);
-      }
-    } else {
-      $this->getLogger()->error("SimpleSpawns: Error in config.yml please delete file and restart server!");
-      $this->getServer()->getPluginManager()->disablePlugin($this);
+    public function onLoad(): void {
+        self::setInstance($this);
+        $this->config = new Config($this->getDataFolder() . self::CONFIG_FILE . Config::YAML);
     }
-  }
 
-  /**
-  * @return YamlProvider
-  */
-  public function getYamlProvider(): YamlProvider
-  {
-    return $this->provider;
-  }
+    public function onEnable(): void {
+        $this->saveResource(self::CONFIG_FILE);
+        $config = $this->getConfigFile();
+        if ($config->get("version") === 4) {
+            SpawnFactory::getInstance()->setLobbyMode($this->getLobbyMode($config->get("teleport.mode")));
+            SpawnFactory::getInstance()->init();
+            if (SpawnFactory::getInstance()->getLobbyMode() === SpawnFactory::MODE_NORMAL) {
+                $this->getServer()->getCommandMap()->registerAll("SimpleSpawns", [new LobbyCommand(), new SetLobbyCommand()]);
+            } else if (SpawnFactory::getInstance()->getLobbyMode() === SpawnFactory::MODE_TRANSFER) {
+                $this->getServer()->getCommandMap()->register("lobby", new LobbyCommand());
+            }
+        } else {
+            $this->getLogger()->error("SimpleSpawns: Your config is from an old version, we recommend you delete it so that the most recent one can be installed.");
+            $this->getServer()->getPluginManager()->disablePlugin($this);
+        }
+    }
 
-  /**
-  * @return SimpleSpawns
-  */
-  public static function getInstance(): SimpleSpawns
-  {
-    return self::$instance;
-  }
+    public function getConfigFile(): Config {
+        return $this->config;
+    }
+
+    public function getLobbyMode(string $mode): string {
+        return match ($mode) {
+            "normal" => SpawnFactory::MODE_NORMAL,
+            "transfer" => SpawnFactory::MODE_TRANSFER,
+            default => SpawnFactory::MODE_NORMAL
+        };
+    }
 }

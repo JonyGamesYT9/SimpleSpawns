@@ -1,13 +1,14 @@
 [![](https://poggit.pmmp.io/shield.state/SimpleSpawns)]
 
 <div align="center">
-<h1>SimpleSpawns | v3.0.0<h1>
+<h1>SimpleSpawns | v4.0<h1>
 <p>Spawns system for PocketMine-MP, written in PHP-8 and only supports PocketMine-MP 4.0.0</p>
 </div>
 
 <h3>⚡ Features:</h3>
 <ul>
 <li>Put the spawn zone where you want</li>
+<li>(New) Transfer players between servers with the /lobby.</li>
 <li>Personalized messages</li>
 <li>Command Aliases: /hub, /lobby, /spawn</li>
 <li>PocketMine-MP 4.0.0 (Only)</li>
@@ -24,5 +25,5 @@
 
 ### 📖 Project information:
 | Version | Pocketmine API | PHP | Status |
-|---|---|---|---|
-| 3.0.0 | 4.0.0 | 8 | Verified |
+|---------|---|---|---|
+| 4.0     | 4.0.0 | 8 | Verified |
