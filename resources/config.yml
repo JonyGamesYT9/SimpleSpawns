@@ -1,0 +1,11 @@
+---
+# ------------------- ( Config Version ) -------------------
+version: 4 # Don't change this.
+# ------------------- ( Teleport Mode ) -------------------
+teleport.mode: "normal" # Types: normal, transfer
+teleport.transfer.address: "127.0.0.0:19132"
+# ------------------- ( Messages ) -------------------
+message.teleport.success: "§l§7SimpleSpawns | §r§fYou returned to the lobby correctly."
+message.teleport.error: "§l§7SimpleSpawns | §r§fThere was an error while teleporting contact an administrator."
+message.command.nopermissions: "§l§7SimpleSpawns | §r§7You do not have permission to use this command."
+...
