@@ -53,7 +53,7 @@ class SimpleSpawns extends PluginBase {
         PermissionManager::getInstance()->addPermission($permission);
     }
 
-    public function getLobbyMode(string $mode): string {
+    public function getLobbyMode(string $mode): int {
         return match ($mode) {
             "normal" => SpawnFactory::MODE_NORMAL,
             "transfer" => SpawnFactory::MODE_TRANSFER,
