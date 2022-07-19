@@ -4,6 +4,10 @@ version: 4 # Don't change this.
 # ------------------- ( Teleport Mode ) -------------------
 teleport.mode: "normal" # Types: normal, transfer
 teleport.transfer.address: "127.0.0.0:19132"
+only.teleport-with-permission: "false"
+# Types: false, true
+# Permission: simplespawns.command.lobby
+# If you enable this feature only players with the permission will be able to access this command.
 # ------------------- ( Messages ) -------------------
 message.teleport.success: "§l§7SimpleSpawns | §r§fYou returned to the lobby correctly."
 message.teleport.error: "§l§7SimpleSpawns | §r§fThere was an error while teleporting contact an administrator."

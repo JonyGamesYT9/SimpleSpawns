@@ -5,6 +5,8 @@ namespace jonygamesyt9\simplespawns;
 use jonygamesyt9\simplespawns\commands\LobbyCommand;
 use jonygamesyt9\simplespawns\commands\SetLobbyCommand;
 use jonygamesyt9\simplespawns\spawn\SpawnFactory;
+use pocketmine\permission\Permission;
+use pocketmine\permission\PermissionManager;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\SingletonTrait;
@@ -27,6 +29,10 @@ class SimpleSpawns extends PluginBase {
         if ($config->get("version") === 4) {
             SpawnFactory::getInstance()->setLobbyMode($this->getLobbyMode($config->get("teleport.mode")));
             SpawnFactory::getInstance()->init();
+            $this->registerPermission("simplespawns.command.setlobby");
+            if ($config->get("only.teleport-with-permission") === "true") {
+                $this->registerPermission("simplespawns.command.lobby");
+            }
             if (SpawnFactory::getInstance()->getLobbyMode() === SpawnFactory::MODE_NORMAL) {
                 $this->getServer()->getCommandMap()->registerAll("SimpleSpawns", [new LobbyCommand(), new SetLobbyCommand()]);
             } else if (SpawnFactory::getInstance()->getLobbyMode() === SpawnFactory::MODE_TRANSFER) {
@@ -40,6 +46,11 @@ class SimpleSpawns extends PluginBase {
 
     public function getConfigFile(): Config {
         return $this->config;
+    }
+
+    public function registerPermission(string $perms): void {
+        $permission = new Permission($perms);
+        PermissionManager::getInstance()->addPermission($permission);
     }
 
     public function getLobbyMode(string $mode): string {

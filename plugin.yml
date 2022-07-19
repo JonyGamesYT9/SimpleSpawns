@@ -8,4 +8,7 @@ permissions:
   simplespawns.command.setlobby:
     description: "Get permission to place the lobby wherever you want."
     default: op
+  simplespawns.command.lobby:
+    description: "Get permission to teleport to the lobby."
+    default: true
 ...

@@ -15,10 +15,10 @@
 </ul>
 
 ### ✒ Commands:
-| Command | Description | Permission |
-| --- | --- | --- |
-| `/setlobby` | Set the position where people will go when using /hub. | `simplespawns.setlobby` |
-| `/hub`, `/lobby`, `/spawn` | Teleportation to the lobby. | `None` |
+| Command | Description | Permission                      |
+| --- | --- |---------------------------------|
+| `/setlobby` | Set the position where people will go when using /hub. | `simplespawns.command.setlobby` |
+| `/hub`, `/lobby`, `/spawn` | Teleportation to the lobby. | `simplespawns.command.lobby`    |
 
 ### 📋 Icon:
 <p>Icon Credits: https://www.flaticon.com/free-icon/teleport_1388524?term=teleport&page=1&position=76&page=1&position=76&related_id=1388524&origin=search</p>

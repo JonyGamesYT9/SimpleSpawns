@@ -3,6 +3,7 @@
 namespace jonygamesyt9\simplespawns\spawn;
 
 use jonygamesyt9\simplespawns\SimpleSpawns;
+use JsonException;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\Server;
@@ -42,6 +43,9 @@ class SpawnFactory {
         }
     }
 
+    /**
+     * @throws JsonException
+     */
     public function create(World $world, Vector3 $position): void {
         $config = $this->getConfig();
         $config->setAll(["world" => $world->getFolderName(), "position" => $position->getX() . ":" . $position->getY() . ":" . $position->getZ()]);
@@ -60,9 +64,19 @@ class SpawnFactory {
     public function teleport(Player $player): void {
         if ($this->getLobbyMode() === self::MODE_NORMAL) {
             if ($this->canTeleport()) {
-                $spawn = $this->getSpawn();
-                $player->teleport(new Position($spawn->getVector3()->getX(), $spawn->getVector3()->getY(), $spawn->getVector3()->getZ(), $spawn->getWorld()));
-                $player->sendMessage(str_replace(["&"], ["§"], SimpleSpawns::getInstance()->getConfigFile()->get("message.teleport.success")));
+                if (SimpleSpawns::getInstance()->getConfigFile()->get("only.teleport-with-permission") === "false") {
+                    $spawn = $this->getSpawn();
+                    $player->teleport(new Position($spawn->getVector3()->getX(), $spawn->getVector3()->getY(), $spawn->getVector3()->getZ(), $spawn->getWorld()));
+                    $player->sendMessage(str_replace(["&"], ["§"], SimpleSpawns::getInstance()->getConfigFile()->get("message.teleport.success")));
+                } else if (SimpleSpawns::getInstance()->getConfigFile()->get("only.teleport-with-permission") === "true") {
+                    if ($player->hasPermission("simplespawns.command.lobby")) {
+                        $spawn = $this->getSpawn();
+                        $player->teleport(new Position($spawn->getVector3()->getX(), $spawn->getVector3()->getY(), $spawn->getVector3()->getZ(), $spawn->getWorld()));
+                        $player->sendMessage(str_replace(["&"], ["§"], SimpleSpawns::getInstance()->getConfigFile()->get("message.teleport.success")));
+                    } else {
+                        $player->sendMessage(str_replace(["&"], ["§"], SimpleSpawns::getInstance()->getConfigFile()->get("message.command.nopermissions")));
+                    }
+                }
             } else {
                 $player->sendMessage(str_replace(["&"], ["§"], SimpleSpawns::getInstance()->getConfigFile()->get("message.teleport.error")));
             }
