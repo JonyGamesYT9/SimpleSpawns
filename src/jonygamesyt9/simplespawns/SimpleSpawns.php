@@ -36,7 +36,7 @@ class SimpleSpawns extends PluginBase {
             if (SpawnFactory::getInstance()->getLobbyMode() === SpawnFactory::MODE_NORMAL) {
                 $this->getServer()->getCommandMap()->registerAll("SimpleSpawns", [new LobbyCommand(), new SetLobbyCommand()]);
             } else if (SpawnFactory::getInstance()->getLobbyMode() === SpawnFactory::MODE_TRANSFER) {
-                $this->getServer()->getCommandMap()->register("lobby", new LobbyCommand());
+                $this->getServer()->getCommandMap()->register("SimpleSpawns", new LobbyCommand());
             }
         } else {
             $this->getLogger()->error("SimpleSpawns: Your config is from an old version, we recommend you delete it so that the most recent one can be installed.");
