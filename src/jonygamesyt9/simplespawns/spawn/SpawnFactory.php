@@ -27,7 +27,7 @@ class SpawnFactory {
     public function init(): void {
         $this->config = new Config(SimpleSpawns::getInstance()->getDataFolder() . "spawn.yml", Config::YAML);
         if ($this->getLobbyMode() === self::MODE_NORMAL) {
-            if ($this->canTeleport()) {
+            if ($this->getConfig()->exists("position") and $this->getConfig()->exists("world")) {
                 $positionToArray = explode(":", $this->getConfig()->get("position"));
                 $positionToVector = new Vector3((int)$positionToArray[0], (int)$positionToArray[1], (int)$positionToArray[2]);
                 if (!Server::getInstance()->getWorldManager()->isWorldLoaded($this->getConfig()->get("world"))) {
