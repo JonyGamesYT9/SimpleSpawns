@@ -26,7 +26,7 @@ class SimpleSpawns extends PluginBase {
     public function onEnable(): void {
         $this->saveResource(self::CONFIG_FILE);
         $config = $this->getConfigFile();
-        if ($config->get("version") === 4) {
+        if ($config->get("version") === "4") {
             SpawnFactory::getInstance()->setLobbyMode($this->getLobbyMode($config->get("teleport.mode")));
             SpawnFactory::getInstance()->init();
             $this->registerPermission("simplespawns.command.setlobby");
@@ -40,7 +40,6 @@ class SimpleSpawns extends PluginBase {
             }
         } else {
             $this->getLogger()->error("SimpleSpawns: Your config is from an old version, we recommend you delete it so that the most recent one can be installed.");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
         }
     }
 

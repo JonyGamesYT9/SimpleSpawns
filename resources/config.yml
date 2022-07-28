@@ -1,6 +1,6 @@
 ---
 # ------------------- ( Config Version ) -------------------
-version: 4 # Don't change this.
+version: "4" # Don't change this.
 # ------------------- ( Teleport Mode ) -------------------
 teleport.mode: "normal" # Types: normal, transfer
 teleport.transfer.address: "127.0.0.0:19132"
