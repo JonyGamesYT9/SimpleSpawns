@@ -20,7 +20,7 @@ class SimpleSpawns extends PluginBase {
 
     public function onLoad(): void {
         self::setInstance($this);
-        $this->config = new Config($this->getDataFolder() . self::CONFIG_FILE . Config::YAML);
+        $this->config = new Config($this->getDataFolder() . self::CONFIG_FILE, Config::YAML);
     }
 
     public function onEnable(): void {
