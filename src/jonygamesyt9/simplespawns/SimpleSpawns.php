@@ -14,17 +14,17 @@ use pocketmine\utils\SingletonTrait;
 class SimpleSpawns extends PluginBase {
     use SingletonTrait;
 
-    public const CONFIG_FILE = "config.yml";
+    public const CONFIG_FILE = "settings.yml";
 
     private Config $config;
 
     public function onLoad(): void {
         self::setInstance($this);
-        $this->config = new Config($this->getDataFolder() . self::CONFIG_FILE, Config::YAML);
     }
 
     public function onEnable(): void {
         $this->saveResource(self::CONFIG_FILE);
+        $this->config = new Config($this->getDataFolder() . self::CONFIG_FILE, Config::YAML);
         $config = $this->getConfigFile();
         if ($config->get("version") === "4") {
             SpawnFactory::getInstance()->setLobbyMode($this->getLobbyMode($config->get("teleport.mode")));
@@ -40,6 +40,7 @@ class SimpleSpawns extends PluginBase {
             }
         } else {
             $this->getLogger()->error("SimpleSpawns: Your config is from an old version, we recommend you delete it so that the most recent one can be installed.");
+            $this->getServer()->getPluginManager()->disablePlugin($this);
         }
     }
 
