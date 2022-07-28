@@ -63,7 +63,7 @@ class SpawnFactory {
 
     public function teleport(Player $player): void {
         if ($this->getLobbyMode() === self::MODE_NORMAL) {
-            if ($this->canTeleport()) {
+            if ($this->getConfig()->exists("world") and $this->getConfig()->exists("position")) {
                 if (SimpleSpawns::getInstance()->getConfigFile()->get("only.teleport-with-permission") === "false") {
                     $spawn = $this->getSpawn();
                     $player->teleport(new Position($spawn->getVector3()->getX(), $spawn->getVector3()->getY(), $spawn->getVector3()->getZ(), $spawn->getWorld()));
