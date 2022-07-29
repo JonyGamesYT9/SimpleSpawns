@@ -33,7 +33,7 @@ class SpawnFactory {
                 if (!Server::getInstance()->getWorldManager()->isWorldLoaded($this->getConfig()->get("world"))) {
                     Server::getInstance()->getWorldManager()->loadWorld($this->getConfig()->get("world"));
                 }
-                $world = Server::getInstance()->getWorldManager()->getWorld($this->getConfig()->get("world"));
+                $world = Server::getInstance()->getWorldManager()->getWorldByName($this->getConfig()->get("world"));
                 $this->add(new Spawn($world, $positionToVector));
             } else {
                 SimpleSpawns::getInstance()->getLogger()->info("SimpleSpawns: No spawn detected in the system, remember to place one.");
